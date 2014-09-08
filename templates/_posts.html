@@ -1,0 +1,5 @@
+<a href="{{ url_for('post', id=task.id) }}#comments">
+<span class="label label-primary">
+{{ task.comments.count() }} Comments
+</span>
+</a>

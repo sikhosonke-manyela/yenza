@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+    {% block body %}
+        <h1>Welcome to FlaskTaskR</h1>
+        <br/>
+            <h3>Add a new task:</h3>
+              <form method="post" action="{{ url_for('add') }}">
+                {{ form.hidden_tag }}
+                <table>
+                  <tr>
+                    <td>{{ form.name.label }}{{ form.name }}&nbsp;</td>
+                    <td>{{ form.due_date.label}}{{ form.due_date }}</td>
+                  </tr>
+                  <tr>
+                    <td>{{ form.start_date.label }}{{ form.start_date }}&nbsp;</td>
+                    <td>{{ form.priority.label }}{{ form.priority }}<td>
+                  <tr>
+                </table>
+            <p><input type="submit" value="Submit" class="btn-primary"></p>
+            <p><em><strong>Please Note:</strong> All dates should be entered using the YYY-MM-DD format. Thank you.</em></p>
+         </form>
+         <hr>
+        <br/>
+        <h2>Open tasks:</h2>
+        <div class="datagrid">
+        <table>
+            <thread>
+            <tr>
+            <th width="200px"><strong>Task Name</strong></th>
+            <th width="80px"><strong>Due Date</strong></th>
+            <th width="90px"><strong>start Date</strong></th>
+            <th width="50px"><strong>Priority</strong></th>
+            <th width="90px"><strong>start By</strong></th>
+            <th width="50px"><strong>Delete</strong></th>
+            <th width="150px"><strong>Complete?</strong></th>
+            </tr>
+            </thread>
+            {% for o in tasks %}
+            <tr>
+            <td width="200px">{{ o.name }}</td>
+            <td width="80px">{{ o.due_date }}</td>
+            <td width="90px">{{ o.start_date }}</td>
+            <td width="50px">{{ o.priority }}</td>
+            <td width="90px">{{ o.poster.name }}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        <br/>
+        <br/>
+        <h2>Closed tasks:</h2>
+        <div class="datagrid">
+        <table>
+            <thread>
+            <tr>
+            <th width="200px"><strong>Task Name</strong></th>
+            <th width="80px"><strong>Due Date</strong></th>
+            <th width="90px"><strong>start Date</strong></th>
+            <th width="50px"><strong>Priority</strong></th>
+            <th width="90px"><strong>start By</strong></th>
+            <th><strong>Actions</strong></th>
+            </tr>
+            </thread>
+            {% for c in closed_tasks %}
+            <tr>
+            <td width="200px">{{ c.name }}</td>
+            <td width="80px">{{ c.due_date }}</td>
+            <td width="90px">{{ c.start_date }}</td>
+            <td width="50px">{{ c.priority }}</td>
+            <td width="90px">{{ c.poster.name }}</td>
+            <td>
+
+            </td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    {% endblock %}

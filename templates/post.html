@@ -1,0 +1,21 @@
+{% block body %}
+{% include '_posts.html' %}
+<h4 id="comments">Comments</h4>
+
+<div class="comment-form">
+<form class="form-horizontal" action="" method="post">
+          <div class="form-group">
+          <label for="comment" class="col-lg-2 control-label">Comment</label>
+          <div class="col-lg-2">
+             {{ form.body }}
+          </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-offset-2 col-lg-2">
+            <input type="submit" class="btn btn-primary" value="Submit">
+
+</div>
+{% include '_comments.html' %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row">
+                  <div class="col-md-12">
+                      <section class="panel tasks-widget">
+                          <header class="panel-heading">
+                             {{projects|count}} Projects
+                          </header>
+                          <div class="panel-body">
+                          <form action="{{ url_for('new') }}" method="post" class="form-horizontal tasi-form">
+                             <div class="control-group">
+                                <div class="controls">
+                                <input type="text" id="name" name="name" class="form-control"
+                                placeholder="Enter here to create a project" value="{{ request.form.name }}"
+                                required/><p></p></div>
+                             </div>
+
+
+
+                              <div class="task-content">
+
+                                  <ul class="task-list">
+                                      {%- for project in projects %}
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value=""  />
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">{{ project.name }}</span>
+                                              <span class="task-title-sp">{{ project.desc }}</span>
+                                              <span class="task-title-sp">{{ project.start_date.strftime('%Y-%m-%d %H:%M') }}</span>
+                                              <span class="badge badge-sm label-success"> {{ project.status }}</span>
+                                              <div class="pull-right hidden-phone">
+                                                 <a class="btn btn-primary btn-xs" href="/todos/{{ project.id }}"><i class="fa fa-pencil"></i></a>
+                                                 <a class="btn btn-danger btn-xs"href="/delete/{{ project.id }}"><i class="fa fa-trash-o "></i></a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                    {%- endfor %}
+                                    </ul>
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" href="{{ url_for('new') }}">Add a new Project</a>
+                                  <a class="btn btn-default btn-sm pull-right" href="#">See All Projects</a>
+                              </div>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+{% endblock %}

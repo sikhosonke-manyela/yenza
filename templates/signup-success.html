@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="panel">
+        <header class="panel-heading">
+                              <h4>Add a task</h4>
+                          </header>
+
+      <div class="row">
+        <div class="panel-body">
+        <div class="form-group">
+
+
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6 well" style="background-color: rgb(255,255,255);">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    {% if session['signed'] %}
+                    <div class="alert alert-success"><strong>Congratulations!</strong><p> You've been signed up as one of our valuable Autobiography publisher. Click Sign In below to began completing your Biography page.</p> </div>
+                    {% else %}
+                    <p><a class="btn btn-lg btn-primary btn-success"  href="{{ url_for('signin') }}">Sign In</a></p>
+                    {%  endif %}
+                </div>
+            </div>
+        </div><!--/container-->
+    </div>                   
+    <div class="col-sm-3">        
+    </div>
+</div>
+</div>
+        </div>
+      </div>
+</section>
+{% endblock %}

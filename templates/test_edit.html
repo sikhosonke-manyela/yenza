@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+<script src="/static/datebummer.js" ></script>
+{% block body %}
+
+  <section class="panel">
+        <header class="panel-heading">
+                              <h4>Edit a task</h4>
+                          </header>
+
+      <div class="row">
+        <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+        <form class="form-horizontal tasi-form" action="" method="post">
+            <label>Task Name:</label>
+            <input class="form-control " name="name" type="text" id="name" value="{{task.name}}" />
+            <label>Due Date (mm/dd/yyyy):</label>
+            <input class="form_datetime form-control" name="due_date" type="text" value="{{task.due_date }}" />
+            <label>Priority:</label>
+            <select name="priority" class="form-control bound-s">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select>
+            <label>Start Date:</label>
+            <input class="form_datetime form-control" name="start_date" type="text"  value="{{ task.start_date }}"  id="datetimepicker5" data-date-format="YYYY-MM-DD"/>
+
+            <button type="submit" class="btn btn-success">Edit a task</button>
+
+            </form>
+            </div>
+        </div>
+            </div>
+        </div>
+      </div>
+  <script type="text/javascript">
+			$(function () {
+				$('#datetimepicker5').datepicker({
+					pickTime: false,
+                    format:'YYYY-MM-DD'
+				});
+			});
+		</script>
+  </section>
+{% endblock %}

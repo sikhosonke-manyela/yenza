@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+ <section class="panel">
+ <div class="panel-body">
+<form action="" method=post class="form-horizontal tasi-form">
+    <h2>Edit Contact</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input class="form-control input-lg m-bot15" type="text" id="first_name" name="first_name"
+            placeholder="First Name" value="{{ contact.first_name }}"
+            required>
+            <input type="text" id="last_name" name="last_name" class="form-control input-lg m-bot15"
+            placeholder="Last Name" value="{{ contact.last_name }}"
+            required>
+            <input type="text" id="email" name="email" class="form-control input-lg m-bot15"
+            placeholder="Email" value="{{ contact.email }}"
+            required>
+
+            <input type="text" id="home_number" name="home_number" class="form-control input-lg m-bot15"
+            placeholder="Home number" value="{{ contact.home_number }}"
+            required>
+            <input type="text" id="work_number" name="work_number" class="form-control input-lg m-bot15"
+            placeholder="Work Number" value="{{ contact.work_number }}"
+            required>
+            <input type="text" id="cell_number" name="cell_number" class="form-control input-lg m-bot15"
+            placeholder="Cell Number" value="{{ contact.cell_number }}"
+            required>
+            <button type="submit" class="btn btn-success">Edit Contact</button>
+            <a href="{{ url_for('index') }}">Back to list</a>
+            </div>
+    </div>
+  </form>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+    <section class="panel">
+        <header class="panel-heading">
+                              <h4>Edit a task</h4>
+                          </header>
+
+      <div class="row">
+        <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+
+  <form action="" method=post class="form-horizontal">
+    <h2>Create New Project</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="name" name="name" class="form-control"
+            placeholder="Project Name" value="{{ request.form.name }}"
+            required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <textarea name="desc" rows=10 class="form-control" placeholder="Project Desc" required>{{ request.form.desc }}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Save</button>
+          <a href="{{ url_for('project_list') }}">Cancel</a>
+        </div>
+    </div>
+  </form>
+
+  </div>
+   </div>
+            </div>
+            </div>
+          </div>
+     </div>
+        </div>
+         </section>
+{% endblock %}

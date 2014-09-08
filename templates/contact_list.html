@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+ <div class="row">
+ <div class="col-md-12">
+
+  <section class="panel tasks-widget">
+  <table class="table table-hover">
+      <tr>
+        <th>#
+        <th>Name
+        <th>Last Name
+        <th>Email
+        <th>Cell Number
+        <th>Home Number
+        <th>Work Number
+
+        {%- for contact in contacts %}
+        <tr>
+            <td> {{ contact.id }}
+            <td> {{ contact.first_name }}
+            <td> {{ contact.last_name }}
+            <td> {{ contact.email }}
+            <td> {{ contact.cell_number }}
+            <td> {{ contact.home_number }}
+            <td> {{ contact.work_number }}
+            <td>
+
+            <div class="pull-right hidden-phone">
+             <a class="btn btn-primary btn-xs" href="/edit_contact/{{ contact.id }}"><i class="fa fa-pencil"></i></a>
+              <a class="btn btn-danger btn-xs" href="/delete/{{ contact.id }}"><i class="fa fa-trash-o "></i></a>
+             </div>
+        {% endfor %}
+
+</table>
+      <div class=" add-task-row">
+<a class="btn btn-success btn-sm pull-left" href="{{ url_for('new_contact') }}">Add New Contact</a>
+<a class="btn btn-default btn-sm pull-right" href="#">All Contacts</a>
+
+
+</section>
+</div>
+</div>
+{% endblock %}

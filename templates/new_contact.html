@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <section class="panel">
+        <header class="panel-heading">
+                             <h4>Add a contact</h4>
+                          </header>
+
+      <div class="row">
+        <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+    <form action="" method=post class="form-horizontal tasi-form">
+
+          <label>First Name</label>
+          <input class="form-control" type="text" id="first_name" name="first_name"
+            placeholder="First Name" value="{{ request.form.first_name }}"
+            required>
+            <label>SurName</label>
+            <input type="text" id="last_name" name="last_name" class="form-control"
+            placeholder="Last Name" value="{{ request.form.last_name }}"
+            required>
+            <label>Email Address</label>
+            <input type="text" id="email" name="email" class="form-control"
+            placeholder="Email" value="{{ request.form.email }}"
+            required>
+            <label>Home Number</label>
+            <input type="text" id="home_number" name="home_number" class="form-control"
+            placeholder="Home number" value="{{ request.form.home_number }}"
+            required>
+            <label>Work Number</label>
+            <input type="text" id="work_number" name="work_number" class="form-control"
+            placeholder="Work Number" value="{{ request.form.work_number }}"
+            required>
+            <label>Cell Number</label>
+            <input type="text" id="cell_number" name="cell_number" class="form-control"
+            placeholder="Cell Number" value="{{ request.form.cell_number }}" required />
+
+
+
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{{ url_for('contact_list') }}">Cancel</a>
+
+  </form>
+</div>
+</div>
+            </div>
+</div>
+</div>
+
+    </section>
+
+{% endblock %}

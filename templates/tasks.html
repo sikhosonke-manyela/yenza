@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <section class="panel">
+        <header class="panel-heading">
+                              <h4>Add a task</h4>
+                          </header>
+
+      <div class="row">
+        <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+        <form class="form-horizontal tasi-form" action="{{ url_for('add_task') }}" method="post">
+            <label>Task Name:</label>
+            <input class="form-control " name="name" type="text" id="name" />
+            <label>Due Date (mm/dd/yyyy):</label>
+            <input class="form_datetime form-control" name="due_date" type="text" >
+            <label>Priority:</label>
+            <select name="priority" class="form-control bound-s">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select>
+            <label>Task Type :</label>
+            <select name="task_type" class="form-control bound-s">
+            <option value="1">WORK</option>
+            <option value="2">CUSTOMER</option>
+            <option value="3">PERSONAL</option>
+            </select>
+
+            <label>State :</label>
+            <select name="state" class="form-control bound-s">
+            <option value="1">To do</option>
+            <option value="2">Doing</option>
+            <option value="3">Done</option>
+            </select>
+
+            <label>Start Date:</label>
+            <input class="form_datetime form-control" name="start_date" type="text" >
+            <button type="submit" class="btn btn-success">Add a task</button>
+
+            </form>
+            </div>
+        </div>
+            </div>
+        </div>
+      </div>
+  </section>
+{% endblock %}

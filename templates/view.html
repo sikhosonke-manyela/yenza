@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="" method=post class="form-horizontal">
+    <h2>Create New Project</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="name" name="name" class="input-xlarge"
+            placeholder="vumi" value="{{ request.form.name }}"
+            required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <textarea name="desc" rows=10 class="input-xlarge" placeholder="tt" required>{{ request.form.desc }}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Add</button>
+          <a href="{{ url_for('index') }}">Back to list</a>
+        </div>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row">
+            <div class="col-md-12">
+                <section class="panel tasks-widget">
+                    <header class="panel-heading">
+                         <h4>{{tasks|count}} Open Task(s)</h4>
+                          </header>
+                          <div class="panel-body">
+                           <form action="{{ url_for('add_task') }}" method="post" class="form-horizontal tasi-form">
+                             <div class="control-group">
+                                <div class="controls">
+                                <input type="text" id="name" name="name" class="form-control"
+                                placeholder="Type here to create a task" value="{{ request.form.name }}"
+                                required/><p></p></div>
+                             </div>
+                             <div class="task-content">
+
+                                  <ul class="task-list">
+                                      {%- for task in tasks %}
+                                      <li>
+                                          <div class="task-checkbox">
+                                           <input type="checkbox" name=done.{{ task.id }}{{ " checked" if task.done }} class="list-child" />
+
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">{{ task.name }}</span>
+                                                {% if task.desc != None %}
+                                              <span class="task-title-sp">{{ task.desc }}</span>
+                                              {% endif %}
+                                                {{  moment(timestamp=None).format('dddd') }}
+                                                {{ moment(task.created_on).fromNow() }}
+
+                                              <div class="pull-right hidden-phone">
+                                                  <span class="task-title-sp">{{ task.created_on.strftime('%Y-%m-%d %H:%M') }}</span>
+                                                 <a class="btn btn-primary btn-xs" href="/edit_post/{{ task.id }}"><i class="fa fa-pencil"></i></a>
+                                                 <a class="btn btn-danger btn-xs" href="/delete_task/{{ task.id }}"><i class="fa fa-trash-o "></i></a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                    {%- endfor %}
+                                    </ul>
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" href="{{ url_for('add_task') }}">Add New Tasks</a>
+                                  <a class="btn btn-default btn-sm pull-right" href="#">See All Tasks</a>
+                              </div>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+
+
+     <div class="row">
+
+
+                  <div class="col-md-12">
+                      <section class="panel tasks-widget">
+
+                          <header class="panel-heading">
+                             <h4>{{tasks|count}} Closed Task(s)</h4>
+                          </header>
+                        <div class="panel-body">
+                              <div class="task-content">
+
+                                  <ul class="task-list ui-sortable" id="sortable">
+                                      {%- for task in closed_tasks %}
+                                      <li class="list-primary" style="position: relative;">
+                                      <i class="icon-ellipsis-vertical"></i>
+                                          <div class="task-checkbox">
+                                           <input type="checkbox" name=done.{{ task.id }}{{ " checked" if task.done }} class="list-child" />
+
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">{{ task.name }}</span>
+                                                {% if task.desc != None %}
+                                              <span class="task-title-sp">{{ task.desc }}</span>
+                                              {% endif %}
+
+
+                                              <div class="pull-right hidden-phone">
+                                                  <span class="task-title-sp">{{ task.due_date.strftime('%Y-%m-%d %H:%M') }}</span>
+                                                  <a class="btn btn-danger btn-xs fa fa-trash-o" href="/delete_task/{{ task.id }}"></a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                    {%- endfor %}
+                                    </ul>
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" href="{{ url_for('add_task') }}">Add New Tasks</a>
+                                  <a class="btn btn-default btn-sm pull-right" href="#">See All Tasks</a>
+                              </div>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+
+    <script>
+      jQuery(document).ready(function() {
+          TaskList.initTaskWidget();
+      });
+
+      $(function() {
+          $( "#sortable" ).sortable();
+          $( "#sortable" ).disableSelection();
+      });
+
+    </script>
+
+{% endblock %}

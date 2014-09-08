@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="" method=post class="form-horizontal">
+    <h2>Edit Task</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="name" name="name" class="input-xlarge"
+            placeholder="vumi" value="{{ mytask.name }}"
+            required>
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+          <textarea name="desc" rows=10 class="input-xlarge" placeholder="tt" required>{{ mytask.desc }}</textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type=checkbox name=done.{{ mytask.id }}{{ " checked" if mytask.done }}>
+        </div>
+    </div>
+
+
+
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Edit</button>
+          <a href="{{ url_for('task_list') }}">Back to list</a>
+        </div>
+    </div>
+  </form>
+{% endblock %}

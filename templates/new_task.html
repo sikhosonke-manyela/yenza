@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  <section class="panel">
+  <div class="panel-body">
+  <div class="form-group">
+  <form action="" method=post class="form-horizontal tasi-form">
+    <h2>Create New Task</h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="name" name="name" class="form-control form-control-inline input-medium"
+            placeholder="Create A task" value="{{ request.form.name }}"
+            required/><button type="submit" class="btn btn-success">Add</button></input>
+
+    </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Add</button>
+          <a href="{{ url_for('task_list') }}">Back to list</a>
+        </div>
+    </div>
+  </form>
+    <a href="{{ url_for('new_task') }}">Add a taski</a>
+</div>
+ </div>
+  </section>
+{% endblock %}
